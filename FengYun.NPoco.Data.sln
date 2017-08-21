@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{7506D9DD-1
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FengYun.NPoco.Data", "src\FengYun.NPoco.Data\FengYun.NPoco.Data.csproj", "{36D60DE9-ED2A-4103-BF09-2E332B4784F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FengYun.NPoco.Data.Test", "FengYun.NPoco.Data.Test\FengYun.NPoco.Data.Test.csproj", "{7C248456-7180-44DD-8A77-0B7E264C3C52}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FengYun.NPoco.Data.Test", "test\FengYun.NPoco.Data.Test\FengYun.NPoco.Data.Test.csproj", "{7C248456-7180-44DD-8A77-0B7E264C3C52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
