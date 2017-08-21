@@ -50,7 +50,7 @@
     <Compile Include="DefaultDbFactory.cs" />
     <Compile Include="EntityBase.cs" />
     <Compile Include="Extensions\NPocoDataBaseExtensions.cs" />
-    <Compile Include="Extensions\ObjectExtensions.cs" />
+    <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Extensions\SqlBuilderExtensions.cs" />
     <Compile Include="Interface\IDbFactory.cs" />
     <Compile Include="Interface\IDbSession.cs" />

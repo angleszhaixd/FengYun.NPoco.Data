@@ -53,7 +53,7 @@ namespace FengYun.NPoco.Data
             if (sqlBuilder == null)
                 throw new ArgumentNullException("SearchSqlBuilder未初始化,获取查询模板失败："+nameof(sqlBuilder));
             SqlBuilder.Template _sqlTmpl = null;
-            if (string.IsNullOrWhiteSpace(SqlTemplate))
+            if (!string.IsNullOrWhiteSpace(SqlTemplate))
             {
                 _sqlTmpl = sqlBuilder.AddTemplate(SqlTemplate);
             }

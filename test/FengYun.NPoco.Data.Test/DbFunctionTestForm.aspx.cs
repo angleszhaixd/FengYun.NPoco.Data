@@ -119,12 +119,13 @@ namespace FengYun.NPoco.Data.Test
                 #region 六、获取动态类型
                 var dynamic1 = session.Query<object[]>("SELECT * FROM Users where 1=1");
                 var dynamic2 = session.DbContext.Fetch<dynamic>("SELECT * FROM Users where 1=1");
-                var dynamic3 = session.DbContext.Fetch<Dictionary<string, object>>("SELECT * FROM NewsInfo where 1=1");
+                var dynamic3 = session.DbContext.Fetch<Dictionary<string, object>>("SELECT * FROM Users where 1=1");
+                var dynamicTable = dynamic3.ToDataTable();
                 #endregion
             }
             txtMessage.Value = msg.ToString();
         }
-
+         
         protected void test2_Click(object sender, EventArgs e)
         {
             StringBuilder msg = new StringBuilder();

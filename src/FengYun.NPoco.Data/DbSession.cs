@@ -184,7 +184,7 @@ namespace FengYun.NPoco.Data
         {
             if (sql.ToLower().IndexOf("select") < 0)
                 throw new ArgumentException("ExcuteQuery查询语句出错,不包含SELECT关键字:" + nameof(sql));
-            var items = DataContext.Fetch<object[]>(sql, parameters);
+            var items = DataContext.Fetch<Dictionary<string, object>>(sql, parameters);
             return items.ToDataTable();
         }
         public DataTable ExcuteQuery(Sql sql)
@@ -208,7 +208,7 @@ namespace FengYun.NPoco.Data
             var procBuilder = new StoredProcedureBuilder(procedureName,DataContext);
             procBuilder.AddParameters(parameters);
             var sql = procBuilder.Build();
-            var items = DataContext.Fetch<object[]>(sql);
+            var items = DataContext.Fetch<Dictionary<string,object>>(sql);
             return items.ToDataTable();
         }
 

@@ -151,16 +151,18 @@
             datetime:2016.12.05
             </summary>
         </member>
-        <member name="T:FengYun.NPoco.Data.ObjectExtensions">
+        <member name="T:FengYun.NPoco.Data.EnumerableExtensions">
             <summary>
             扩展
+            author:zhaixd
+            datetime:2016.05.22
             </summary>
         </member>
-        <member name="M:FengYun.NPoco.Data.ObjectExtensions.ToDataTable(System.Collections.Generic.IEnumerable{System.Object[]})">
+        <member name="M:FengYun.NPoco.Data.EnumerableExtensions.ToDataTable(System.Collections.Generic.IEnumerable{System.Collections.Generic.IDictionary{System.String,System.Object}})">
             <summary>
             Object数据转换为DataTable
             </summary>
-            <param name="items"></param>
+            <param name="items">要转换的字典集合</param>
             <returns></returns>
         </member>
         <member name="T:FengYun.NPoco.Data.SqlBuilderExtensions">
