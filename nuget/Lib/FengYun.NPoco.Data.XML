@@ -1,0 +1,494 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FengYun.NPoco.Data</name>
+    </assembly>
+    <members>
+        <member name="T:FengYun.NPoco.Data.DbSession">
+            <summary>
+            仓储实现
+            author:zhaixd
+            date:2016.08.12
+            </summary>
+        </member>
+        <member name="M:FengYun.NPoco.Data.DbSession.#ctor(FengYun.NPoco.Data.INPocoDataBase)">
+            <summary>
+            默认构造
+            </summary>
+            <param name="dataBase"></param>
+        </member>
+        <member name="M:FengYun.NPoco.Data.DbSession.GetSqlTemlate``1(System.Action{NPoco.SqlBuilder})">
+            <summary>
+            获取SQL查询模板（暂时停用）
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="conditionAct"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FengYun.NPoco.Data.DbSession.SingleById``1(System.Object)">
+            <summary>
+            获取指定主键值得实体
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="primaryKey">主键值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FengYun.NPoco.Data.DbSession.Single``1(System.String,System.Object[])">
+            <summary>
+            通过指定条件获取单一实体
+            多于一条则报错,不确定有且仅有一条时请使用 First
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="sql">查询条件或查询语句</param>
+            <param name="keys"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FengYun.NPoco.Data.DbSession.Single``1(FengYun.NPoco.Data.SearchSqlBuilder)">
+            <summary>
+            通过指定条件获取单一实体
+            多于一条则报错,不确定有且仅有一条时请使用 First
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="search">查询条件</param>
+            <returns></returns>
+        </member>
+        <member name="M:FengYun.NPoco.Data.DbSession.First``1(System.String,System.Object[])">
+            <summary>
+            通过指定条件获取第一个实体
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="sql">查询条件或查询语句</param>
+            <param name="keys"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FengYun.NPoco.Data.DbSession.First``1(FengYun.NPoco.Data.SearchSqlBuilder)">
+            <summary>
+            通过指定条件获取第一个实体
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="sql">查询条件</param>
+            <returns></returns>
+        </member>
+        <member name="M:FengYun.NPoco.Data.DbSession.Query``1(System.String,System.Object[])">
+            <summary>
+            查询数据列表
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="search"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FengYun.NPoco.Data.DbSession.QueryPage``1(System.Int32,System.Int32,System.String,System.Object[])">
+            <summary>
+            分页查询列表
+            </summary>
+            <typeparam name="TEntity">查询的对象</typeparam>
+            <param name="pageIndex">页码</param>
+            <param name="pageSize">每页条数</param>
+            <param name="sql">sql语句或查询条件(where xx=@0)</param>
+            <param name="args">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:FengYun.NPoco.Data.DbSession.Query``1(FengYun.NPoco.Data.SearchSqlBuilder)">
+            <summary>
+            查询数据列表
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="search"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FengYun.NPoco.Data.DbSession.QueryPage``1(FengYun.NPoco.Data.SearchSqlBuilder)">
+            <summary>
+            分页查询列表
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="search">查询条件中必须指定Order字段</param>
+            <returns></returns>
+        </member>
+        <member name="T:FengYun.NPoco.Data.DbSessionBase">
+            <summary>
+            仓储基类
+            author：zhaixd
+            date:2016.08.12
+            </summary>
+        </member>
+        <member name="P:FengYun.NPoco.Data.DbSessionBase.IsTranscation">
+            <summary>
+            是否开启事物
+            </summary>
+        </member>
+        <member name="T:FengYun.NPoco.Data.DefaultDbFactory">
+            <summary>
+            数据库会话工厂类
+            </summary>
+        </member>
+        <member name="M:FengYun.NPoco.Data.DefaultDbFactory.GetDbSession(System.Boolean)">
+            <summary>
+            获取数据库回话
+            </summary>
+            <param name="keepAlive">是否保持连接(默认否)</param>
+            <returns></returns>
+        </member>
+        <member name="M:FengYun.NPoco.Data.DefaultDbFactory.Setup">
+            <summary>
+            初始化DbFactory,网站启动时调用
+            </summary>
+        </member>
+        <member name="M:FengYun.NPoco.Data.Entity`1.IsTransient">
+            <summary>
+            判断是否有ID值
+            </summary>
+            <returns>如果是临时对象,则为True</returns>
+        </member>
+        <member name="T:FengYun.NPoco.Data.Entity">
+            <summary>
+            默认基类 GUID主键
+            </summary>
+        </member>
+        <member name="T:FengYun.NPoco.Data.NPocoDataBaseExtensions">
+            <summary>
+            数据库回话事件监听
+            author:zhaixd
+            datetime:2016.12.05
+            </summary>
+        </member>
+        <member name="T:FengYun.NPoco.Data.ObjectExtensions">
+            <summary>
+            扩展
+            </summary>
+        </member>
+        <member name="M:FengYun.NPoco.Data.ObjectExtensions.ToDataTable(System.Collections.Generic.IEnumerable{System.Object[]})">
+            <summary>
+            Object数据转换为DataTable
+            </summary>
+            <param name="items"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FengYun.NPoco.Data.SqlBuilderExtensions">
+            <summary>
+            查询条件扩展
+            author：zhaixd
+            datetime:2016.12.06
+            </summary>
+        </member>
+        <member name="M:FengYun.NPoco.Data.SqlBuilderExtensions.DefaultTemplete``1(NPoco.SqlBuilder,NPoco.IDatabase,System.String)">
+            <summary>
+            获取默认的Sql查询语句 zxd 2016.12.06
+            格式:select /**select**/ from test where /**where**/ and id = @0 /**orderby**/
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="sqlBuilder"></param>
+            <param name="database">DB对象</param>
+            <param name="sqlWhere">默认查询条件（注意:初始化时where 条件最后必须是/**where**/,用于替换后续添加的条件 ）</param>
+            <returns></returns>
+        </member>
+        <member name="M:FengYun.NPoco.Data.SqlBuilderExtensions.WhereIf(NPoco.SqlBuilder,System.Boolean,System.String,System.Object[])">
+            <summary>
+            拼接查询条件 eg:SqlBuilder.WhereIf(1==1,"id=@0",1)
+            </summary>
+            <param name="sqlBuilder"></param>
+            <param name="Clause">判断条件</param>
+            <param name="strWhere">查询条件 eg: id=@0/ id=@0 OR name=@1</param>
+            <param name="args">条件字段对应的值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FengYun.NPoco.Data.SqlBuilderExtensions.Create(FengYun.NPoco.Data.SearchSqlBuilder,System.Action{NPoco.SqlBuilder})">
+            <summary>
+            构建常规查询
+            </summary>
+            <param name="search"></param>
+            <param name="act">查询委托</param>
+            <returns></returns>
+        </member>
+        <member name="M:FengYun.NPoco.Data.SqlBuilderExtensions.CreatePage(FengYun.NPoco.Data.SearchSqlBuilder,System.Action{NPoco.SqlBuilder},System.Int32,System.Int32)">
+            <summary>
+            构建分页查询(act参数中必须调用order指定排序)
+            </summary>
+            <param name="search"></param>
+            <param name="act">查询条件构建</param>
+            <param name="pageIndex">当前页码</param>
+            <param name="pageSize">每页条数(默认10)</param>
+            <returns></returns>
+        </member>
+        <member name="T:FengYun.NPoco.Data.IDbFactory">
+            <summary>
+            数据回话工厂接口
+            </summary>
+        </member>
+        <member name="T:FengYun.NPoco.Data.IDbSession">
+            <summary>
+            基础数据仓储
+            </summary>
+        </member>
+        <member name="P:FengYun.NPoco.Data.IDbSession.DbContext">
+            <summary>
+            对外公布数据库会话
+            </summary>
+        </member>
+        <member name="T:FengYun.NPoco.Data.INPocoDataBase">
+            <summary>
+            db上下文接口
+            </summary>
+        </member>
+        <member name="M:FengYun.NPoco.Data.IRepository.SingleById``1(System.Object)">
+            <summary>
+            获取指定主键值得实体
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="primaryKey">主键值</param>
+            <returns></returns>
+        </member>
+        <member name="M:FengYun.NPoco.Data.IRepository.Single``1(System.String,System.Object[])">
+            <summary>
+            通过指定条件获取单一实体
+            多于一条则报错,不确定有且仅有一条时请使用 First
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="sql">查询条件或查询语句</param>
+            <param name="keys"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FengYun.NPoco.Data.IRepository.Single``1(FengYun.NPoco.Data.SearchSqlBuilder)">
+            <summary>
+            通过指定条件获取单一实体
+            多于一条则报错,不确定有且仅有一条时请使用 First
+            </summary>
+            <typeparam name="TEntity">查询委托</typeparam>
+            <param name="conditionAct"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FengYun.NPoco.Data.IRepository.First``1(System.String,System.Object[])">
+            <summary>
+            通过指定条件获取第一个实体
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="sql">查询条件或查询语句</param>
+            <param name="keys"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FengYun.NPoco.Data.IRepository.First``1(FengYun.NPoco.Data.SearchSqlBuilder)">
+            <summary>
+            通过指定条件获取第一个实体
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="sql">查询条件</param>
+            <returns></returns>
+        </member>
+        <member name="M:FengYun.NPoco.Data.IRepository.Query``1(System.String,System.Object[])">
+            <summary>
+            查询数据列表
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="search"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FengYun.NPoco.Data.IRepository.QueryPage``1(System.Int32,System.Int32,System.String,System.Object[])">
+            <summary>
+            分页查询列表
+            </summary>
+            <typeparam name="TEntity">查询的对象</typeparam>
+            <param name="pageIndex">页码</param>
+            <param name="pageSize">每页条数</param>
+            <param name="sql">sql语句或查询条件(where xx=@0)</param>
+            <param name="args">参数</param>
+            <returns></returns>
+        </member>
+        <member name="M:FengYun.NPoco.Data.IRepository.Query``1(FengYun.NPoco.Data.SearchSqlBuilder)">
+            <summary>
+            查询数据列表
+            </summary>
+        </member>
+        <member name="M:FengYun.NPoco.Data.IRepository.QueryPage``1(FengYun.NPoco.Data.SearchSqlBuilder)">
+            <summary>
+            分页查询列表
+            </summary>
+        </member>
+        <member name="M:FengYun.NPoco.Data.ITransaction.BeginTranscation">
+            <summary>
+            开启事务
+            </summary>
+        </member>
+        <member name="M:FengYun.NPoco.Data.ITransaction.Commit">
+            <summary>
+            提交
+            </summary>
+        </member>
+        <member name="M:FengYun.NPoco.Data.ITransaction.Rollback">
+            <summary>
+            回滚
+            </summary>
+        </member>
+        <member name="M:FengYun.NPoco.Data.InvalidSqlParameterSetup.#ctor(System.String,System.Exception)">
+            <summary>
+            The constructor for creating an exception with an error message and a inner exception.
+            </summary>
+            <param name="errorMessage">The error message for the given exception.</param>
+            <param name="innerException">Inner exception for a bubbling exception stacktrace.</param>
+        </member>
+        <member name="T:FengYun.NPoco.Data.NPocoDataBase">
+            <summary>
+            自实现DataBase类型，重载相应方法
+            </summary>
+        </member>
+        <member name="P:FengYun.NPoco.Data.NPocoDataBase.LastExcuteSQL">
+            <summary>
+            最后执行的sql语句
+            </summary>
+        </member>
+        <member name="P:FengYun.NPoco.Data.NPocoDbFactory.DefaultConnectionName">
+            <summary>
+            当前链接字符串名称
+            </summary>
+        </member>
+        <member name="M:FengYun.NPoco.Data.NPocoDbFactory.GetDefaultConnectionName">
+            <summary>
+            获取默认数据库连接字符串名
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:FengYun.NPoco.Data.SearchSqlBuilder">
+            <summary>
+            查询包裹器(用于构建查询语句)
+            </summary>
+        </member>
+        <member name="F:FengYun.NPoco.Data.SearchSqlBuilder.defaultPlaceHolder">
+            <summary>
+            默认查询字段占位符
+            </summary>
+        </member>
+        <member name="P:FengYun.NPoco.Data.SearchSqlBuilder.DefaultPageInfo">
+            <summary>
+            默认分页查询实体
+            </summary>
+        </member>
+        <member name="P:FengYun.NPoco.Data.SearchSqlBuilder.SqlTemplate">
+            <summary>
+            SQL初始化模板
+            </summary>
+        </member>
+        <member name="M:FengYun.NPoco.Data.SearchSqlBuilder.Build``1(NPoco.IDatabase)">
+            <summary>
+            获取查询sql模板
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+            <param name="dataBase"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FengYun.NPoco.Data.SingletonDependency`1">
+            <summary>
+            单例依赖创建
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:FengYun.NPoco.Data.StoredProcedureBuilder">
+            <summary>
+            存储过程查询条件包裹器(目前支持sqlserver,orcale,mysql)
+            author:zhaixd
+            date:2016.08.11
+            </summary>
+        </member>
+        <member name="F:FengYun.NPoco.Data.StoredProcedureBuilder._argsObject">
+            <summary>
+            最终的参数对象
+            </summary>
+        </member>
+        <member name="M:FengYun.NPoco.Data.StoredProcedureBuilder.#ctor(System.String,NPoco.IDatabase)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="procedureName">存储过程名称</param>
+            <param name="dataContext">当前DB对象</param>
+        </member>
+        <member name="M:FengYun.NPoco.Data.StoredProcedureBuilder.AddParameters(System.Collections.Generic.IEnumerable{FengYun.NPoco.Data.StoreParameter})">
+            <summary>
+            批量添加参数
+            </summary>
+            <param name="parameters"></param>
+        </member>
+        <member name="M:FengYun.NPoco.Data.StoredProcedureBuilder.AddParameter(FengYun.NPoco.Data.StoreParameter)">
+            <summary>
+            添加参数
+            </summary>
+            <param name="parameter"></param>
+        </member>
+        <member name="M:FengYun.NPoco.Data.StoredProcedureBuilder.Build">
+            <summary>
+            构建最终的执行语句
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FengYun.NPoco.Data.StoredProcedureBuilder.getInitalSQL(System.String)">
+            <summary>
+            获取调用存储过程的SQL语句
+            </summary>
+            <param name="procedureName"></param>
+            <returns></returns>
+        </member>
+        <member name="F:FengYun.NPoco.Data.StoredProcedureBuilder._funSpecialParameterName">
+            <summary>
+            获取特殊参数类型名称
+            </summary>
+        </member>
+        <member name="F:FengYun.NPoco.Data.StoredProcedureBuilder._funSpecialParameterValue">
+            <summary>
+            获取特殊参数类型值
+            </summary>
+        </member>
+        <member name="T:FengYun.NPoco.Data.StoreParameter">
+            <summary>
+            存储过程参数实体(基本参数)
+            author:zhaixd
+            date:2016.08.11
+            </summary>
+        </member>
+        <member name="P:FengYun.NPoco.Data.StoreParameter.Name">
+            <summary>
+            参数名称
+            </summary>
+        </member>
+        <member name="P:FengYun.NPoco.Data.StoreParameter.Value">
+            <summary>
+            参数值
+            </summary>
+        </member>
+        <member name="P:FengYun.NPoco.Data.StoreParameter.Sort">
+            <summary>
+            参数序号
+            </summary>
+        </member>
+        <member name="P:FengYun.NPoco.Data.StoreParameter.SpecialParameter">
+            <summary>
+            特殊参数(针对输出及返回值参数)
+            </summary>
+        </member>
+        <member name="M:FengYun.NPoco.Data.StoreParameter.#ctor">
+            <summary>
+            默认构造
+            </summary>
+        </member>
+        <member name="M:FengYun.NPoco.Data.StoreParameter.#ctor(System.String,System.Object,System.Nullable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="name">参数名称</param>
+            <param name="value">参数值</param>
+            <param name="sort">排序(不传按传入的输出排列)</param>
+        </member>
+        <member name="M:FengYun.NPoco.Data.StoreParameter.#ctor(System.String,System.Data.Common.DbParameter,System.Nullable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="name">参数名称</param>
+            <param name="dbParameter">特殊参数类型,现在仅支持输出参数Output</param>
+            <param name="sort">排序</param>
+        </member>
+        <member name="M:FengYun.NPoco.Data.StoreParameter.#ctor(System.String,System.Object,System.Nullable{System.Int32},System.Data.Common.DbParameter)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <param name="value"></param>
+            <param name="sort">sort</param>
+            <param name="dbParameter"></param>
+        </member>
+    </members>
+</doc>
