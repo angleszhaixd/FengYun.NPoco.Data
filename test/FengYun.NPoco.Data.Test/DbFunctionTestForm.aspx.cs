@@ -89,7 +89,7 @@ namespace FengYun.NPoco.Data.Test
                         .WhereIf(1 == 12, "id>@0", 0);
                     //指定排序
                     cond.OrderBy("id DESC");
-                },1,3);
+                },2,2);
                 var pageEntity = session.QueryPage<User>(sqlList2);
                 msg.AppendFormat("2、获取分页数据:{0}{1}", pageEntity.TotalItems, Environment.NewLine);
                 #endregion
@@ -185,6 +185,33 @@ namespace FengYun.NPoco.Data.Test
             Debug.WriteLine("Debug 余小章");
             System.Diagnostics.Trace.WriteLine("Release 余小章");
             */
+
+            List<IDictionary<string, object>> testDics = new List<IDictionary<string, object>>();
+            testDics.Add(new Dictionary<string, object> {
+                { "Id",Guid.NewGuid()},
+                { "Name","水电费水电费"},
+                { "CrTime",DateTime.Now },
+                { "Fees",null },
+                { "Nums",33 },
+                { "IsDeleted",true }
+            });
+            testDics.Add(new Dictionary<string, object> {
+                { "Id","dererer"},
+                { "Name","232FDD水电费是否"},
+                { "CrTime",null },
+                { "Fees",33 },
+                { "Nums",22.2 },
+                { "IsDeleted",1 }
+            });
+            testDics.Add(new Dictionary<string, object> {
+                { "Id",null},
+                { "Name","232324454"},
+                { "CrTime","1733-12-12 12:12" },
+                { "Fees",33.3 },
+                { "Nums",13 },
+                { "IsDeleted","false" }
+            });
+            var testDT = testDics.ToDataTable();
 
             //测试存储过程
             StringBuilder msg = new StringBuilder();

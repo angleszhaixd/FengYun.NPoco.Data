@@ -226,12 +226,12 @@ namespace FengYun.NPoco.Data
             return DataContext.SingleOrDefault<T>(procBuilder.Build());
         }
 
-        public void ExecuteStoredProcedure(string procedureName, params StoreParameter[] parameters)
+        public int ExecuteStoredProcedure(string procedureName, params StoreParameter[] parameters)
         {
             var procBuilder = new StoredProcedureBuilder(procedureName, DataContext);
             procBuilder.AddParameters(parameters);
             var _sql = procBuilder.Build();
-            DataContext.Execute(_sql.SQL,CommandType.StoredProcedure,_sql.Arguments);
+            return DataContext.Execute(_sql.SQL,CommandType.StoredProcedure,_sql.Arguments);
         }
         #endregion
 

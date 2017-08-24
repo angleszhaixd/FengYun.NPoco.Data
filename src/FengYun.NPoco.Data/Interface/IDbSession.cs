@@ -30,7 +30,7 @@ namespace FengYun.NPoco.Data
         DataTable QueryStoredProcedure(string procedureName, params StoreParameter[] parameters);
         IEnumerable<TEntity> QueryStoredProcedure<TEntity>(string procedureName, params StoreParameter[] parameters);
         TEntity SingleStoredProcedure<TEntity>(string procedureName, params StoreParameter[] parameters);
-        void ExecuteStoredProcedure(string procedureName, params StoreParameter[] parameters);
+        int ExecuteStoredProcedure(string procedureName, params StoreParameter[] parameters);
         #endregion
     }
 }

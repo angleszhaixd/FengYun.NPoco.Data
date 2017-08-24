@@ -144,6 +144,21 @@
             默认基类 GUID主键
             </summary>
         </member>
+        <member name="T:FengYun.NPoco.Data.ObjectExtensions">
+            <summary>
+            扩展
+            author:zhaixd
+            datetime:2016.05.22
+            </summary>
+        </member>
+        <member name="M:FengYun.NPoco.Data.ObjectExtensions.ParseTypeValue(System.Object,System.Type)">
+            <summary>
+            转换值到指定的类型
+            </summary>
+            <param name="value">要转换的值</param>
+            <param name="targetType">目标类型</param>
+            <returns></returns>
+        </member>
         <member name="T:FengYun.NPoco.Data.NPocoDataBaseExtensions">
             <summary>
             数据库回话事件监听

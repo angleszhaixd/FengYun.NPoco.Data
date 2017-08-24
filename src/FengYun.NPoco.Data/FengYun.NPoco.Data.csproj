@@ -49,6 +49,7 @@
     <Compile Include="DbSessionBase.cs" />
     <Compile Include="DefaultDbFactory.cs" />
     <Compile Include="EntityBase.cs" />
+    <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Extensions\NPocoDataBaseExtensions.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Extensions\SqlBuilderExtensions.cs" />

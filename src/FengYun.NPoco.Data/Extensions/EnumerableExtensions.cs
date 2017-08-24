@@ -29,8 +29,8 @@ namespace FengYun.NPoco.Data
             Func<KeyValuePair<string, object>, DataColumn> _funConvertDataColumn = (x) =>
             {
                 DataColumn col = new DataColumn(x.Key);
-                if (x.Value is Guid)
-                    col.DataType = typeof(Guid);
+                //if (x.Value !=null && x.Value.GetType() == typeof(Guid))
+                //    col.DataType = typeof(Guid);
                 if (x.Value is DateTime)
                     col.DataType = typeof(DateTime);
                 else if (x.Value is Double)
@@ -52,9 +52,29 @@ namespace FengYun.NPoco.Data
 
             var headers = p.Select(x => _funConvertDataColumn(x)).ToArray();
             table.Columns.AddRange(headers);
+
+            //数据值处理
+            Func<IList<object>, object[]> _funConvertDbNullValue = (objs) => {
+                IList<object> validValues = new List<object>();
+                for (int i = 0; i < objs.Count; i++)
+                {
+                    var originValue = objs[i];
+                    if (i >= headers.Length)
+                    {
+                        validValues.Add(originValue);
+                        continue;
+                    }
+                    Type columnDataType = headers[i].DataType;
+                    var convertValue = originValue.ParseTypeValue(columnDataType);
+                    validValues.Add(convertValue);
+                }
+                return validValues.ToArray();
+            };
+
             foreach (var parent in items)
             {
-                table.Rows.Add(parent.Values.ToArray());
+                var convertRowValues = _funConvertDbNullValue(parent.Values.ToList());
+                table.Rows.Add(convertRowValues);
             }
             return table;
         }
